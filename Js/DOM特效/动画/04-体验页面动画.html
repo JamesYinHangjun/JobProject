@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>offsetLeft的构成</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #demo {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;    /* 只有设置了定位才能设置left等属性    */
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">奔跑吧</button>
+    <div id="demo"></div>
+
+
+    <script>
+        var timer = null;
+        var btn = document.getElementById("btn");
+        var demo = document.getElementById("demo");
+        
+        btn.onclick = function() {
+            clearInterval(timer); // 是为了防止点击多次而生成多个定时器
+            // demo.style.left = "400px"
+
+            timer = setInterval(function(){
+                var leader = demo.offsetLeft;   // 获取当前位置
+                var step = 10;
+
+                var target = 400;
+                if(leader < 400 ){
+                    leader = leader + step;
+                    demo.style.left = leader + "px"
+                } else {
+                    clearInterval(timer)
+                }
+                console.log("代码还在运行!")
+            },15)
+        }
+    </script>
+</body>
+</html>

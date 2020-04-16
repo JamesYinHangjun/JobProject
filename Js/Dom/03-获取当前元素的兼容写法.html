@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>读取元素的样式</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn01">点我一下</button>
+    <br>
+    <div id="box01"></div>
+
+    <script>
+        window.onload = function() {
+            var btn01 = document.getElementById("btn01");
+            var box01 = document.getElementById("box01");
+
+            btn01.onclick = function() {
+                alert(getStyle(box01,"height"))
+            }
+        }
+
+        // 定义一个函数，用来获取指定元素当前的样式
+        //    参数: 
+        //         obj: 要获取样式的元素
+        //         name:  要获取的样式名
+
+
+        function getStyle(obj, name) {
+            // 必须要加上window，否则IE8显示"getComputedStyle未定义"的错误
+            // 原因： 在一个函数作用域中找变量getComputedStyle，没有找到，
+            //        到全局中去找，再没有找到，会报错，所以会导致在IE8下会报错
+                    
+                    // 没有加window，getComputedStyle是一个变量，会去作用域中寻找，找不到会报错
+                    // 加上window后，getComputedStyle变成了window对象的属性，找不到会返回undefined
+
+            if(window.getComputedStyle) {
+                // 正常浏览器的方式
+                return getComputedStyle(obj, null)[name]
+            } else {
+                // IE8的方式
+                return obj.currentStyle[name]
+            }
+
+
+            // 不采用下面这种的原因：
+            //     对其他浏览器都没什么问题，但对于IE11，因为IE11中这两种都包括，下面的写法会
+            //     优先使用currentStyle
+            
+            // if(obj.currentStyle) {
+            //     // 正常浏览器的方式
+            //     return obj.currentStyle[name]
+            // } else {
+            //     // IE8的方式
+            //     return getComputedStyle(obj, null)[name]
+            // }
+            
+        }
+    </script>
+</body>
+</html>

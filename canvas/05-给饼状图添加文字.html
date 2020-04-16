@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas">
+
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+        canvas.width =  600 ;
+        canvas.height = 600 ;
+        canvas.style.border = "1px solid #ccc";
+        var ctx = canvas.getContext("2d");
+
+        var data = [{
+            "value": 0.4,
+            "color": "red",
+            "title": "应届生"
+        },
+        {
+            "value": 0.2,
+            "color": "blue",
+            "title": "老学员推荐"
+        },
+        {
+            "value": 0.3,
+            "color": "green",
+            "title": "社招"
+        },
+        {
+            "value": 0.1,
+            "color": "#ccc",
+            "title": "公开课"
+        }];
+
+        var centerX = canvas.width / 2;
+        var centerY = canvas.height / 2;
+        var beginAngle = 0;
+        var endAngle = 0;
+        //文字角度
+        var textAngel = 0;
+        for(var i = 0; i < data.length ; i++ ){
+            ctx.beginPath();
+            ctx.moveTo(centerX,centerY);
+            endAngle += data[i].value * 360;
+            ctx.arc(centerX,centerY,200,beginAngle*Math.PI / 180,endAngle*Math.PI /180);
+            ctx.fillStyle = data[i].color;
+            ctx.fill();
+
+            //给图加字
+            textAngel = beginAngle + 1 / 2 *data[i].value *360;
+            var x = centerX + 220 * Math.cos(textAngel * Math.PI / 180);
+            var y = centerY + 220 * Math.sin(textAngel * Math.PI / 180);
+            ctx.fillText(data[i].value*100 + "%",x,y);
+            beginAngle = endAngle;
+        }
+
+
+
+    </script>
+
+
+</body>
+</html>

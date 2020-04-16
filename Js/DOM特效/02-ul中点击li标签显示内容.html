@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ul.cityList>li{北京$}*5 -->
+    <ul class="cityList">
+        <li>北京1</li>
+        <li>北京2</li>
+        <li>北京3</li>
+        <li>北京4</li>
+        <li>北京5</li>
+    </ul>
+    <script>
+         var liNodeList = document.querySelectorAll(".cityList li");
+        // liNodeList.forEach(function(element,index) {
+        //     element.onclick = function(){
+        //         alert(this.innerHTML);
+        //     }
+        // })
+
+        //减少内存的消耗
+        liNodeList.forEach(function(element,index) {
+            element.onclick = lionclick;
+        });
+
+        function lionclick() {
+            alert(this.innerHTML);
+        }
+    </script>
+</body>
+</html>

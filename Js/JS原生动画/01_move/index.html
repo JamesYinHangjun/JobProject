@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            overflow: hidden;
+        }
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+            position:absolute;
+            left: 0;
+            right: 0;
+            /* top: 100px; */
+        }
+    </style>
+
+</head>
+<body>
+    <div></div>
+    <script>
+        var speedX = 5;
+        var speedY = 3;
+
+        var div = document.querySelector('div');
+
+        function move() {
+            var currentLeft = parseInt(window.getComputedStyle(div).left);
+            var currentTop = parseInt(window.getComputedStyle(div).top);
+
+            check_border_collision(div);
+
+            var left = currentLeft + speedX;
+            var top = currentTop + speedY;
+
+            div.style.left = left + 'px';
+            div.style.top = top + 'px';
+        }
+
+
+
+        // 边缘碰撞
+        function check_border_collision(el) {
+            var style = window.getComputedStyle(el);
+
+            var left = parseInt(style.left);      // 元素left
+            var top = parseInt(style.top);
+            var w = parseInt(style.width);        // 元素宽度
+            var h = parseInt(style.height);        // 元素高度
+
+            // 左边碰撞
+            if(left < 0) {
+                left = 0;
+                speedX *= -1;
+            }
+
+            // 右边碰撞
+            if(left > window.innerWidth - w) {
+                left = window.innerWidth - w;
+                speedX *= -1;
+            }
+
+            // 上边碰撞
+            if(top < 0) {
+                top = 0;
+                speedY *= -1;
+            }
+
+            if(top > window.innerHeight - h) {
+                top = window.innerHeight -h;
+                speedY *= -1;
+            }
+
+            el.style.left = left + 'px';
+            el.style.top = top + 'px';
+        }
+
+        setInterval(function() {
+            move()
+        },20);
+    </script>
+
+</body>
+</html>

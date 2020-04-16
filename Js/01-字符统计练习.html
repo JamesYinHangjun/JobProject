@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>字符统计</title>
+</head>
+<body>
+    <script>
+        var t = abaaacdfsdfd;
+
+        //遍历数组中的每个字符，然后把字符当做对象的属性名，然后给对象添加属性
+        //添加属性前，先判断是否存在属性，如果存在，那么就让属性的属性值+1，不存在属性值就等于L
+        var h = {};
+
+        for(var i = 0; i < t,length; i++) {
+            var charStr = t[i];
+            if(charStr in h ){
+                h[charStr] += 1;
+            }else {
+                h[charStr] = 1;
+            }
+        }
+
+        //找到数组中属性的值最大的那个属性
+        var max =0,maxChar;
+        for(var k in h) {
+            if(h[k] > max) {
+                max = h[k];
+                maxChar = k;
+            }
+        }
+
+         console.log(max + '  ' + maxChar);
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>五角星点击案例</title>
+    <style>
+        span {
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="wjx-wrap">
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+        <span>☆</span>
+    </div>
+
+    <script>
+        var spans = document.querySelectorAll(".wjx-wrap span");
+        spans.forEach(function(element,index) {
+            element.onclick = function() {
+                spans.forEach(function(wjx,index) {
+                    wjx.innerHTML = "☆";
+                });
+                element.innerHTML = "★";
+            };
+        })
+
+    </script>
+</body>
+</html>

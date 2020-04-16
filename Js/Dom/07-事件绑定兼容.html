@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件绑定兼容</title>
+</head>
+<body>
+    <script>
+        // 参数：
+        //     obj 要绑定事件的对象
+        //     eventName 事件的字符串(不要 on)
+        //     callback 回调函数
+        function addEvent(obj, eventName, callback) {
+            if(obj.addEventListener) {
+                // 大部分浏览器的兼容方式
+                obj.addEventListener(eventName, callback, false)
+            } else if ( obj.attachEvent){
+
+                // IE8及以下
+                // obj.attachEvent("on"+eventStr, callback);     这样写的话 this 指向window
+                obj.attachEvent("on"+eventName, function() {
+                    // 在匿名函数中调用回调函数
+                    callback.call(obj);
+                })
+            } else {
+                obj['on' + eventName]
+            }
+        }
+    </script>
+</body>
+</html>

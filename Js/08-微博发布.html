@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>微博发布</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+        .box {
+            width: 600px;
+            /* height: 300px; */
+            border: 1px solid #000;
+            margin: 100px auto;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+        textarea {
+            width: 450px;
+            height: 260px;
+            resize: none;
+            outline: none;
+        }
+        #ul {
+            margin-left: 70px;
+        }
+        #ul li {
+            height: 35px;
+            width: 450px;
+            border-bottom: 1px solid #ccc;
+            line-height: 35px;
+        }
+        #ul li a {
+            float: right;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        微博发布<textarea id="txt" cols="30" rows="10"></textarea> <button id="btn">发布</button>
+        <ul id="ul">
+
+        </ul>
+    </div>
+</body>
+</html>
+
+<script>
+    var btn = document.getElementById('btn');
+    var ul = document.getElementById('ul');
+    var txt = document.getElementById("txt");
+    btn.onclick = function() {
+        if(txt.value == '') {
+            alert("请输入内容，不能为空");
+            return false;
+        } else {
+            var li = document.createElement('li');
+            // li里面的文字是文本框的值
+            li.innerHTML = txt.value + "<a href='javascript:;'>删除</a>";
+
+            //如果没有li， 我们先放入一个li
+            var lis = ul.children;
+            if(lis.length == 0) {
+                ul.appendChild(li);
+            } else {
+                ul.insertBefore(li,lis[0]);
+            }
+            // ul.appendChild(li);
+            txt.value = '';
+
+            //后面发布的，会更优先显示
+             // 后面的li 都是放在第一个li 的前面
+
+             //获取a链接
+             var as = ul.getElementsByTagName('a');
+             for(var i = 0; i<as.length; i++) {
+                 as[i].onclick = function() {
+                     //当点击删除时，删除的是这个li
+                     ul.removeChild(this.parentNode);
+                 }
+             }
+        }
+    }
+</script>

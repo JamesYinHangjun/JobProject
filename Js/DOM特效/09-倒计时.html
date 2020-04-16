@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>倒计时</title>
+    <style>
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="time"></div>
+
+    <script>
+        window.onload = function() {
+            var endTime = new Date("2019/2/4 00:00:00");    //获取最终时间
+            var time = document.getElementById("time");
+
+            setInterval(function() {
+                var date = new Date();
+                var ms = endTime.getTime() - date.getTime(); //获取从现在到endTime的毫秒数
+                var s = parseInt(ms / 1000);    // 获取从现在到endTime的秒数
+                var day = parseInt(s/3600/24);
+                // console.log(day);
+                var hour = parseInt(s/3600%24);
+                var minute = parseInt(s/60%60);
+                var second = parseInt(s%60);
+
+                time.innerHTML = "距离除夕还有:" + day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+            },1000);
+
+
+        }
+    </script>
+</body>
+</html>

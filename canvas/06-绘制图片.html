@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img src="img/111.jpg" alt="" id="img">
+    <canvas id="canvas">
+
+    </canvas>
+
+    <script>
+        var canvas = document.getElementById("canvas");
+        canvas.width =  600 ;
+        canvas.height = 600 ;
+        canvas.style.border = "1px solid #ccc";
+        var ctx = canvas.getContext("2d");
+
+        //第一步： 得到图片
+        var img = document.getElementById("img");
+        // 第二步: 开始画
+        //必须要img加载完成才行
+        img.onload = function() {
+            ctx.drawImage(img,100,100);
+        }
+    </script>
+
+
+</body>
+</html>

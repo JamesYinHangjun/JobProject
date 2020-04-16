@@ -1,0 +1,43 @@
+@keyframes dou {
+	0% {
+		transform: rotate(0deg)
+	}
+	
+	10%,20%,30% {
+		transform: rotate(-4deg)
+	}
+	
+	15%,25%,35% {
+		transform: rotate(4deg)
+	}
+	
+	40% {
+		transform: rotate(-2deg)
+	}
+	
+	45% {
+		transform: rotate(2deg)
+	}
+	
+	50% {
+		transform: rotate(0deg)
+	}
+	
+	100% {
+		transform: rotate(0deg)
+	}
+}
+
+.dou {
+	animation: dou 1s 0s infinite;
+}
+
+/* 
+	用法：
+		比如说长按某个元素，元素抖动 小程序中longpress某个元素，给钙元素添加dou类即可
+ */
+
+
+
+
+

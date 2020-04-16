@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>todoList</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="todoValue">
+        <button @click="handleBtnClick">提交</button>
+
+        <todo-item v-bind:content="item" v-for="(item,index) in list" :index="index"
+        @delete = "handleItemDelete">{{item}}</todo-item>
+    </div>
+
+    <script>
+        // Vue.component('TodoItem', {
+        //     props: ['content'],
+        //     template: "<li>{{content}}</li>"
+        // })
+
+        var TodoItem = {
+            props: ['content','index'],
+            template: "<li @click='handleItemClick'>{{content}}</li>",
+            methods: {
+                handleItemClick() {
+                    // 这里 需要把数据 传给父组件，然后点击删除
+                    // $emit 向外触发事件,把 index 作为参数带给父组件
+                    this.$emit("delete",this.index)
+                }
+            }
+        }
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                list: [],
+                todoValue:''
+            },
+            components: {
+                TodoItem: TodoItem
+            },
+            methods: {
+                handleBtnClick() {
+                    this.list.push(this.todoValue);
+                    this.todoValue = ''
+        
+                handleItemDelete(index) {
+                    this.list.splice(index,1);
+                }
+
+            }
+        })
+    </script>
+
+</body>
+</html>

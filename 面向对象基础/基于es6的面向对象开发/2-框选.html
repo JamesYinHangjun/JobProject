@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>2-框选</title>
+    <style>
+        .selectBox {
+            position: fixed;
+            border: 1px solid #06c0fd;
+            background: rgba(6, 192, 255, .3);
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // 拖拽三步走
+        // 1.鼠标按下   获取鼠标坐标
+        // 2.鼠标移动
+        // 3.鼠标抬起
+
+        {
+            let box = document.querySelector('#box');
+            let startMouse = {};     // 按下时 鼠标坐标
+            let select = null;
+
+            // 鼠标移动的处理函数
+            let move = (e) => {
+                // 获得鼠标移动后，现在鼠标的位置
+                let nowMouse = {
+                    x: e.clientX,
+                    y: e.clientY
+                };
+                // 获得现在鼠标与开始时之间的距离
+                let dis = {
+                    x: nowMouse.x - startMouse.x,
+                    y: nowMouse.y - startMouse.y
+                };
+
+                // 框的width，height,left,top
+                select.style.width = Math.abs(dis.x) + 'px';
+                select.style.height = Math.abs(dis.y) + 'px';
+                select.style.left = Math.min(startMouse.x,nowMouse.x) + 'px';
+                select.style.top = Math.min(startMouse.y,nowMouse.y) + 'px';
+            }
+
+            // 鼠标按下时
+            document.addEventListener('mousedown', (e) => {
+                // 鼠标按下时 鼠标的坐标
+                startMouse = {
+                    x: e.clientX,
+                    y: e.clientY
+                };
+
+                // 创建一个div
+                select = document.createElement('div');
+                select.className = 'selectBox';
+                document.body.appendChild(select);
+
+                // 鼠标按下
+                document.addEventListener('mousemove', move);
+                // 鼠标抬起
+                document.addEventListener('mouseup',()=>{
+                    select.remove();
+                    document.removeEventListener("mousemove",move);
+                },{
+                    once: true
+                })
+            });
+        }
+    </script>
+</body>
+</html>

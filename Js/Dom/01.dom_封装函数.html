@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01.Dom函数封装.html</title>
+    <script type="text/javascript">
+        <!-- 封装一个函数，获取各种获取元素节点的功能 -->
+        function $() {
+            // 1.对参数进行区分
+            switch(vArg[0]) {
+                case "#":  //id
+                    return document.getElementById(vArg.substring(1));
+                    break;
+                case ".":  //className
+                    return elementByClassName(document,vArg.substring(1));
+                    break;
+                default:
+                    // 对参数的前五个字符进行判断
+                    var str = vArg.substring(0,5);
+                    if(str == "name=") {     //name
+                        return document.getElementsByName(vArg.substring(5));
+                    } else {   // tagname
+                         return document.getElementsByTagName(vArg);
+                    }
+                    break;
+            }
+        }
+
+        function elementByClassName(parent,classStr) {
+            // <1> 找到 parent 下所有的元素节点
+            var nodes = parent.getElementsByTagName("*");
+            var result = [];     // 用来记录 符合 条件的元素节点
+            for(var i =0; i < nodes,length; i++) {
+                // <2> 如果 符合条件，添加到数组中
+                if(nodes[i].className == classStr) {
+                    result.push(nodes[i]);
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

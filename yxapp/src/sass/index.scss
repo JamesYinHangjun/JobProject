@@ -1,0 +1,275 @@
+@import '_base.scss';
+
+//头部设置
+.top-hd {
+    display: flex;
+    padding: 0 11px;
+    background: linear-gradient( to right, #910758,#f61c5a);
+    height: 38px;
+
+    // 左侧的 logo 区域
+    .logo-wrap {
+        height: 32px;
+        width: 32px;
+        margin-top: 4px;
+        background: url("../img/logo.png") no-repeat;
+        background-size: contain;
+    }
+
+    //中间搜索区域
+    .srch-wrap {
+        flex: 1;     //自动缩放
+        padding: 6px 5px;
+        position: relative;
+        .srch-txt {
+            width: 100%;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 12px;
+            font-size: 12px;
+            line-height: 24px;
+            background-color: #930f3e;
+            padding-left: 1em;
+            color: #fff;
+            top: 8px;
+            position: absolute;
+
+            input:-ms-input-placeholder {
+                color: #913c66;
+            }
+            input::-webkit-input-placeholder {
+                color: #913c66;
+            }
+        }
+        i {
+            position: absolute;
+            right: 1em;
+            top: 10px;
+            color: #fff;
+        }
+    }
+
+
+    //右侧消息栏
+    .msg-wrap {
+        width: 24px;
+        height: 33px;
+        position: relative;
+        color: #fff;
+        i {
+            font-size: 22px;
+            line-height: 22px;
+            position: absolute;
+            top: 3px;
+            left: 8px;
+        }
+        span {
+            font-size: 12px;
+            line-height: 12px;
+            position: absolute;
+            top: 24px;
+            // left: 6px;
+        }
+    }
+}
+
+
+.scroll-view {
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+// 轮播图区域
+.swiper-container {
+    // border: 1px solid #beae8d;
+    // border-left: none;
+    // border-right: none;
+    position: relative;
+
+    // 移动端1px边框问题解决
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 200%;
+        height: 200%;
+        transform: scale(.5,.5);
+        transform-origin: left top;
+        border: 1px solid #beae8d;
+        border-right: none;
+        border-left: none;
+        box-sizing: border-box;
+    }
+
+    .swiper-wrapper {
+        .swiper-slide {
+            img {
+                width: 6.4rem;
+                height: 2.4rem;
+                vertical-align: middle;
+            }
+        }
+    }
+    .swiper-pagination-bullet-active {
+        background-color: #fff;
+    }
+}
+
+//网站导航区域
+.site-nav-wrap {
+    .site-nav {
+        background-color: #fff;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 56px;
+        .site-nav-item {
+            flex: 0 0 36px;
+            font-size: 12px;
+            height: 47px;
+            a {
+                display: block;
+                i {
+                    width: 30px;
+                    height: 30px;
+                    display: block;
+                    border-radius: 15px;
+                    background-color: #7f47dd;
+                    font-size: 16px;
+                    color: #fff;
+                    text-align: center;
+                    line-height: 30px;
+                    margin: 0 auto;
+                }
+                p {
+                    font-size: 12px;
+                    color: #494949;
+                }
+            }
+        }
+    }
+    .cs-bg {
+      background-color: #f32363 !important;
+    }
+    .ms-bg {
+      background-color: #d6d623 !important;
+    }
+    .cz-bg {
+      background-color: #ff8a2f !important;
+    }
+}
+
+// 网站内容区域
+$layer-padding: 0.22rem;
+$layer-main-color: #faaf0d;
+.layer {
+    background: #fff;
+    // $layer-padding: 11px;
+    .layer-hd {
+        // height: 28px;
+        height: 0.56rem;
+        position: relative;
+        padding: 0 $layer-padding;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $layer-main-color;
+        &::before {
+            content: '';
+            // width: 6px;
+            width: 0.12rem;
+            // height: 28px;
+            height: 100%;
+            background-color: $layer-main-color;
+            position: absolute;
+            left: $layer-padding;
+            top: 0px;
+        }
+
+        &::after {
+          @include boder1px($bd-color);
+        }
+
+        .hd-l {
+            display: flex;
+            justify-content: flex-start;
+            padding: 0.26rem;
+            font-size: 0.3rem;
+            font-weight: bolder;
+
+            .hd-title {
+                i.icon {
+                    font-size: 0.3rem;
+                }
+            }
+            .time-wrap {
+                font-size: 0.24rem;
+                color: #121212;
+                word-spacing: 0.04rem;
+                span {
+                    float: left;
+                    margin-left: 0.05rem;
+                }
+                .time-num {
+                    // font-size: 0.24rem;
+                    line-height: 0.3rem;
+                    height: 0.3rem;
+                    width: 0.22rem;
+                    background-color: #121212;
+                    display: inline-block;
+                    font-weight: normal;
+                    color: #fff;
+                    text-align: center;
+                }
+            }
+        }
+
+        .hd-r {
+            i.icon {
+                display: inline-block;
+                height: 0.3rem;
+                width: 0.3rem;
+                position: relative;
+                top: 0.03rem;
+                background-color: $layer-main-color;
+                border-radius: 0.04rem;
+                &::before {
+                    color: #fff;
+                    font-size: 0.24rem;
+                }
+            }
+        }
+
+
+
+    }
+
+    .layer-bd {
+        height: 2.26rem;
+
+        .layer-bd-list {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    }
+}
+
+.ms-layer {
+    .layer-bd {
+        .layer-bd-list {
+            .layer-list-item {
+                a {
+                    display: block;
+                    img {
+                        width: 1.78rem;
+                        height: 1.78rem;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+    }
+}

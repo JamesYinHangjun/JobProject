@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>左中右布局</title>
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            width: 100%;
+        }
+        .left {
+            width: 200px;
+            height: 200px;
+            background: red;
+            position: absolute;
+            left: 0;
+        }
+        .right {
+            width: 200px;
+            height: 200px;
+            background: purple;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .center {
+            margin: 0px 200px;
+            background: green;
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+        <!-- 写一个左中右布局占满屏幕，其中左右两块是固定宽度200 ，
+        中间自适应宽，要求先加载中间块，请写出结构及样式 -->
+        <div>
+            <div class="left"></div>
+            <div class="center"></div>
+            <div class="right"></div>
+        </div>
+</body>
+</html>

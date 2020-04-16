@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="ajax">
+        <input type="text">
+        <input type="submit" value="发送">
+        <p></p>
+    </div>
+
+    <script>
+        var btn = document.querySelector('input[type=submit]');
+        var input = document.querySelector('input[type=text]');
+
+        btn.addEventListener('click',function() {
+            // alert('1')
+            var xhr = new XMLHttpRequest;
+            xhr.open('post','03.php');
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+            xhr.send('text=' + input.value);
+
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState == 4 && xhr.status == 200 ){
+                    var result = xhr.responseText;
+                    document.querySelector('p').innerHTML = result;
+                }
+            }
+        })
+    </script>
+
+</body>
+</html>

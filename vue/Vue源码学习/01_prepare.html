@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="fragment_test">
+        <li>test1</li>
+        <li>test2</li>
+        <li>test3</li>
+    </ul>
+
+
+    <script>
+        // 1.[].slice.call(lis)    将伪数组转化为真数组
+        const lis = document.getElementsByTagName('li')  //lis 是伪数组
+        console.log(lis instanceof Array, lis[1].innerHTML, lis.forEach)  // false test2 undefined(在原型链上找，找不到就是undefined)
+
+        // es6 中 将伪数组转成数组 Array.from()
+        console.log(Array.from(lis) instanceof Array)
+        // es5   让一个函数Array.prototype.slice 成为 指定对象 的 方法 进行调用 将 lis 的this 指向Array.prototype.slice
+        // lis 没有变，只是产生了一个新的对象
+        const lis2 = Array.prototype.slice.call(lis)
+        console.log(lis2 instanceof Array, lis2[1].innerHTML, lis2.forEach)  //true "test2" ƒ forEach() { [native code] }
+
+
+
+    // 2.Object.defineProperty(obj,propertyName,{}) 给对象添加属性(指定描述符)
+        const obj = {
+            firstName: "A",
+            lastName: "B"
+        }
+
+        // 给obj 添加fullName属性
+        // obj.fullName = 'A-B' 不行，不能修改
+
+        // configurable : 是否可以重新定义
+        // enumerable:   是否可以枚举
+        // value :      初始值
+        // writable:    是否可以修改属性值
+        // get:  根据其他相关的属性动态计算得到当前属性值
+        // set:  监视当前属性值的变化，更新其他相关的属性值
+        Object.defineProperty(obj,'fullName', {
+            get() {
+                return this.firstName + '-' + this.lastName
+            },
+            set(value) {
+                const names = value.split('-')
+                this.firstName = names[0]
+                this.lastName = names[1]
+            }
+        })
+        console.log(obj.fullName)
+        obj.firstName = 'C'
+        obj.lastName = 'D'
+        console.log(obj.fullName)
+        obj.fullName = 'E-F'
+        console.log(obj.firstName, obj.lastName)
+
+
+    // 3.Object.keys(obj)  得到对象自身可枚举属性组成的数组
+    const names = Object.keys(obj);
+    console.log(names)    // firstName lastName(不包括fullName,因为默认的emurable 是 false)
+
+    // 4.obj.hasOwnProperty(prop)  判断prop 是否是 obj 自身的属性
+    console.log(obj.hasOwnProperty('fullName'), obj.hasOwnProperty('toString'))    //true false(obj可以调用toString,但是不属于它的属性，属于原型链上的属性)
+
+    // 5.
+    </script>
+</body>
+</html>

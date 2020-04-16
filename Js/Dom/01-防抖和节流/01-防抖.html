@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防抖</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+
+        // 防抖(debounce):  （只执行最后一次)
+        //     多次触发事件时，并不执行hnadle函数,而是在延迟n秒后执行,
+        //     如果在n秒内又触发了事件，则重新计算时间
+
+        // fn指要防抖的函数，delay指要延迟的时间
+        function debounce(fn,delay) {
+            var timer = null;
+            return function() {    // 闭包
+                if(timer != null) {
+                    clearTimeout(timer)
+                }
+                timer = setTimeout(fn,delay)
+            }
+        }
+
+        function handle() {
+            console.log(Math.random())
+        }
+
+        window.addEventListener("scroll", debounce(handle,1000))
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+
+    <body>
+        <form action="index.html" method="post">
+            用户名:<input type="text" id="username" onfocus="showTips('span_username','用户名长度不能小于6')" onkeyup="checkUsename();"><span id="span_username" ></span><br>
+            密码:<input type="password" id="password" onfocus="showTips('span_password','密码长度不能小于6')" onblur=checkPassword()><span id="span_password"></span><br>
+            确认密码:<input type="password" id="repassword" onfocus="showTips('span_repassword','两次密码必须一致')" onblur="checkRePassword()"><span id="span_repassword"></span><br>
+            邮箱:<input type="text" id="email"><br>
+            手机号:<input type="text" id="text"><br>
+
+            <input type="submit" value="提交">
+        </form>
+    </body>
+
+    <script type="text/javascript">
+        function  showTips() {
+            var span = document.getElementById("span_username");
+            span.innerHTML = "用户名长度不能小于6位";
+        }
+
+        function checkUsename() {
+            var uValue = document.getElementById("username").value;
+            var span = document.getElementById("span_username");
+            if(uValue.length < 6) {
+                span.innerHTML = "对不起，用户名太短";
+            }else{
+                span.innerHTML = "恭喜您,可用";
+            }
+        }
+
+        function checkPassword() {
+            var uPass = document.getElementById("password").value;
+            var span = document.getElementById("span_password");
+            if(uPass.length <6 ){
+                span.innerHTML = "对不起，太短";
+            }else {
+                span.innerHTML = "恭喜您，可用!";
+            }
+        }
+
+        function checkRePassword() {
+            var uPass = document.getElementById("password").value;
+            var uRePass = document.getElementById("repassword").value;
+            var span = document.getElementById("span_repassword");
+            if(uPass != uRePass ){
+                span.innerHTML = "对不起，两次密码不一致!";
+            }else {
+                span.innerHTML = "恭喜您，可用!";
+            }
+        }
+    </script>
+</html>

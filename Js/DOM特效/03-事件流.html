@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件流</title>
+    <style>
+        div {
+            border: 1px solid #ccc;
+        }
+        .parent {
+            width:300px;
+            height: 300px;
+            padding: 50px;
+            background: red;
+        }
+        .children {
+            width: 100px;
+            height: 100px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        父盒子
+        <div class="children">
+            子盒子
+        </div>
+    </div>
+
+    <script>
+        var parentDiv = document.querySelector(".parent");
+        parentDiv.onclick = function() {
+            alert("父元素被点击了");
+        }
+
+        window.onclick = function() {
+            alert("window被点击了");
+        }
+    </script>
+</body>
+</html>

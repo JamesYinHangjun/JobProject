@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>div跟随鼠标移动</title>
+    <style>
+        #box1 {
+            width: 1000px;
+            height: 1000px;
+            background-color: red;
+
+            /* 要想设置位置，必须设置定位 */
+            position:absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+
+    <script>
+        window.onload = function() {
+            // // 使div 可以跟随鼠标移动
+            // var div = document.getElementById("box1");
+            // document.onmousemove = function(event) {
+            //     event = event || document.event;
+
+            //     // pageX和pageY 可以获取鼠标相对于当前页面的坐标
+            //     // 但是这两个属性不兼容 ie8-
+            //     var left = event.pageX;
+            //     var top = event.pageY;
+
+            //     div.style.left = left + "px";
+            //     div.style.top = top + "px";
+            // }
+
+
+
+
+
+             // 使div 可以跟随鼠标移动
+             var div = document.getElementById("box1");
+            document.onmousemove = function(event) {
+                event = event || document.event;
+
+                // 这 st 是滚动条滚动的距离
+                var st = document.body.scrollTop || document.documentElement.scrollTop;
+                var sl = document.body.scrollLeft || document.documentElement.scrollLeft;
+
+                var left = event.pageX;
+                var top = event.pageY;
+
+                div.style.left = left + sl + "px";
+                div.style.top = top + st + "px";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>简单验证表单css</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 30px;
+            margin: 100px auto;
+        }
+        .re {
+            width: 150px;
+            height: 22px;
+            border: 1px solid #ccc;
+            background-color: #eee;
+            display: inline-block;
+            /* line-height: 20px; */
+            font: 12px/22px "microsoft yahei";
+            padding-left: 5px;
+            color: #ccc;
+        }
+
+        .wrong {
+            border: 1px solid #ffa6a6;
+            background-color: #ffcaca;
+            color: red;
+        }
+        .right {
+            border: 1px solid #8cff8c;
+            background-color: #bdffbd;
+            color: green;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <label for="txt">语文: </label><input type="text" id="txt"><span id="result" class='re'> 请输入成绩</span>
+    </div>
+</body>
+</html>
+
+<script>
+    var txt = document.getElementById("txt");
+    var result = document.getElementById("result");
+
+    txt.onblur = function() {
+        if(txt.value == '') {
+            result.className = 're wrong';
+            result.innerHTML = "请输入内容"
+        } else if(isNaN(txt.value)) {
+            result.className = 're wrong';
+            result.innerHTML = "请输入合法数字"
+        } else if(txt.value > 150 || txt.value < 0) {
+            result.className = 're wrong';
+            result.innerHTML = "请输入0-150之间"
+        } else {
+            result.className = 're right';
+            result.innerHTML = "输入正确"
+        }
+    }
+</script>

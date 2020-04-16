@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小米官网轮播图</title>
+    <script src="js/jquery-1.11.1.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            padding:0px;
+        }
+        ul {
+            list-style-type:none;
+            margin:0px;
+            padding:0px;
+        }
+        #banner {
+            position: relative;     /* 相对定位，不脱离文档流，给绝对定位元素位置参考 */
+            width: 1226px;
+            height: 460px;
+            margin: 0 auto;
+        }
+        #banner .item {
+            display:none;           /* 隐藏所有图片，在第一张图片上单独设置显示样式，显示第一张图片 */
+            position: absolute;    /* 绝对定位，脱离文档流 */
+            top: 0px;
+            left: 0px;
+        }
+
+
+        .lr-tab .btn {
+            position:absolute;   /*越往下去，层级越高，此时按钮会在图片上*/
+            top:200px;
+            width:41px;
+            height:69px;
+            background:url("images/icon-slides.png");
+        }
+        .lr-tab .left {
+            left:234px;
+            background-position-x:-83px;
+        }
+        .lr-tab .left:hover {
+            background-position-x:0px;
+        }
+        .lr-tab .right {
+            right:0px;
+            background-position-x:-125px;
+        }
+        .lr-tab .right:hover {
+            background-position-x:-41px;
+        }
+
+
+        .tab-btn {
+            position:absolute;
+            right:30px;
+            bottom:20px;
+            width:120px;
+            height:30px;
+            /* background:blue; */
+        }
+        .tab-btn .btn {
+            float:left;
+            margin-left:10px;
+            width:6px;
+            height:6px;
+            background:#868686;
+            border:2px solid #c3c3c3;
+            border-radius:50%;
+        }
+        .tab-btn .btn:hover {
+            background:#e4e4e4;
+            border-color:#7f7f7f;
+        }
+        .tab-btn .active {               /*当第一章图片显示的时候，按钮和鼠标划过按钮时的状态一样*/
+            background:#e4e4e4;
+            border-color:#7f7f7f;
+        }
+    </style>
+</head>
+<body>
+    <div id="banner">
+        <div class="img-wrap">
+            <!-- ul>li.item*5>img -->
+            <ul>
+                <li class="item" style="display:block">
+                    <img src="images/01.jpg" width="1226px" height="460px" alt="">
+                </li>
+                <li class="item">
+                    <img src="images/02.jpg" width="1226px" height="460px" alt="">
+                </li>
+                <li class="item">
+                    <img src="images/03.jpg" width="1226px" height="460px" alt="">
+                </li>
+                <li class="item">
+                    <img src="images/04.jpg" width="1226px" height="460px" alt="">
+                </li>
+                <li class="item">
+                    <img src="images/05.jpg" width="1226px" height="460px" alt="">
+                </li>
+            </ul>
+        </div>
+
+        <div class="lr-tab">
+            <div class="left btn"></div>
+            <div class="right btn"></div>
+        </div>
+        <div class="tab-btn">
+            <!-- ul>li.btn*5 -->
+            <ul>
+                <li class="btn active"></li>
+                <li class="btn"></li>
+                <li class="btn"></li>
+                <li class="btn"></li>
+                <li class="btn"></li>
+            </ul>
+        </div>
+
+
+        <script>
+            var index = 0;     /*初始化一个变量，指向下标*/
+            $(".tab-btn .btn").click(function(){
+                index = $(this).index();     /*获取点击元素下标*/
+                $(this).addClass("active").siblings().removeClass("active");
+                $(".item").eq(index).fadeIn().siblings().fadeOut();
+            })
+
+            $(".lr-tab .right").click(function() {
+                index++;
+                if(index > 4) {
+                    index = 0;
+                }
+                $(".item").eq(index).fadeIn().siblings().fadeOut();
+                $(".tab-btn .btn").eq(index).addClass("active").siblings().removeClass("active");
+            });
+
+            $(".lr-tab .left").click(function() {
+                index--;
+                if(index < 0) {
+                    index = 4;
+                }
+                $(".item").eq(index).fadeIn().siblings().fadeOut();
+                $(".tab-btn .btn").eq(index).addClass("active").siblings().removeClass("active");
+            });
+
+            var timer = setInterval(function(){
+                index++;
+                if(index > 4) {
+                    index = 0;
+                }
+                $(".item").eq(index).fadeIn().siblings().fadeOut();
+                $(".tab-btn .btn").eq(index).addClass("active").siblings().removeClass("active");
+            },2000);
+        </script>
+    </div>
+</body>
+</html>

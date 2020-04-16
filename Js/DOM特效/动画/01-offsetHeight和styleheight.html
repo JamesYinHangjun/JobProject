@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>styleHeight</title>
+    <style>
+        #demo {
+            width: 200px;
+            /* height: 200px; */
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo" style="height: 100px"></div>
+
+    <script>
+        var demo = document.getElementById("demo");
+        console.log(demo.style.height)    //只能获取行内样式，获得的值是字符串而且有单位
+        console.log(demo.offsetHeight)    // 获得的是元素客观的高度， 而且是数值
+    </script>
+</body>
+</html>

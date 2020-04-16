@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../libs/swiper.min.css">
+
+    <style>
+        .swiper-container {
+            width: 590px;
+            height: 470px;
+            border: 3px solid purple;
+            margin: 0 auto;
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+            width: 35%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="imgs/1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="imgs/2.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="imgs/3.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="imgs/4.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="imgs/5.jpg" alt="">
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+
+        <!-- 如果需要滚动条 -->
+        <!-- <div class="swiper-scrollbar"></div> -->
+    </div>
+
+    <script src="../libs/swiper.min.js"></script>
+
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            // direction: 'vertical', // 垂直切换选项
+            // horizontal 横向运动
+            direction: 'horizontal',
+            loop: true, // 循环模式选项
+
+            // autoplay: true, //等同于以下设置
+            autoplay: {
+                delay: 1000,
+                stopOnLastSlide: false,
+                disableOnInteraction: true,
+            },
+
+            // 如果需要分页器
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3D动画实战应用之信息简介</title>
+    <style>
+        body,p {
+            margin:0px;
+        }
+        .message {
+            width:940px;
+            height:300px;
+            margin:60px auto;
+            display:flex;
+            justify-content:space-between;
+        }
+        .msgList {
+            width:300px;
+            height:300px;
+            perspective:1000px;
+        }
+        .msgList:hover .listtext {
+            transform:rotateY(0deg);
+        }
+        .msgList:hover .listpic {
+            transform:rotateY(-90deg);
+        }
+        .listpic,.listtext {
+            position:absolute;          /*让图片和文字都漂浮起来，后漂浮的在上面 */
+            width:300px;
+            height:300px;
+            transition:0.5s;
+        }
+        .listpic {
+            background-color:#10c018;
+        }
+        .listtext {
+            display:flex;
+            align-items:center;
+            background-color:rgba(0,0,0,0.7);
+             transform:rotateY(90deg);   /* 一开始文字是y轴上90度，显示成一条很细很细的线，看不见 */
+        }
+        p {
+            color:#fff;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <div class="msgList">
+            <div class="listpic">
+                <img src="images/01.jpg" alt="美女1" width="300px" height="300px">
+            </div>
+            <div class="listtext">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with </p>
+            </div>
+        </div>
+        <div class="msgList">
+            <div class="listpic">
+                <img src="images/02.jpg" alt="美女2" width="300px" height="300px">
+            </div>
+            <div class="listtext">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with </p>
+            </div>
+        </div>
+        <div class="msgList">
+            <div class="listpic">
+                <img src="images/03.jpg" alt="美女3" width="300px" height="300px">
+            </div>
+            <div class="listtext">
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

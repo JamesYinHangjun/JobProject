@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Ajax实例</h2>
+    <p class="result"></p>
+
+    <script>
+        var xhr = new XMLHttpRequest;
+
+        xhr.open('get','02.php');
+        //请求头
+        xhr.setRequestHeader('Content-Type','text/html');
+        
+        xhr.send(null);
+
+        //接收响应
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState == 4 && xhr.status == 200 ) {
+                var result = xhr.responseText;
+                document.querySelector(".result").innerHTML = result;
+            }
+        }
+    </script>
+</body>
+</html>

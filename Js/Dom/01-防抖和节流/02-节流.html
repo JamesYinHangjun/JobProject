@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节流</title>
+</head>
+<body>
+    <script>
+
+        // 节流(throttle)：
+        //     定时运行(间隔执行)
+        //     在单位时间内只触发一次(如果在单位时间内触发多次，只执行一次)
+        function throttle(fn,delay) {
+            var startTime = 0
+            return function() {
+                var nowTime = Date.now()
+                if(nowTime - startTime >= delay) {
+                    fn()
+                    startTime = nowTime
+                }
+            }
+        }
+
+        function handle() {
+            console.log(Math.random())
+        }
+        document.addEventListener("mousemove", throttle(handle,1000))
+    </script>
+</body>
+</html>

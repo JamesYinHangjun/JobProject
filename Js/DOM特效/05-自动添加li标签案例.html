@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自动添加li标签</title>
+</head>
+<body>
+    <input id="btn" type="button" value="按钮">
+    <ul class="list"></ul>
+
+    <script>
+        var btn = document.querySelector("#btn");
+        var index = 1;
+        btn.addEventListener("click",function() {
+            var list = document.querySelector(".list");
+            list.innerHTML += "<li>" +index+ "</li>";
+            index++;
+        })
+    </script>
+</body>
+</html>

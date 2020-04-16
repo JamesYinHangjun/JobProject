@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<script>
+    // 上面function中放入属性
+    function Product() {
+        this.name=""
+        this.price = ''
+        this.description = ''
+    }
+
+    // 方法放在下面的原型中
+    Product.prototype = {
+        //购买
+        buy:function(){},
+        //加入购物车
+        addCart: function(){
+
+        }
+    }
+
+
+    //实例化
+    var iphone6s = new Product()
+    iphone6s.price = "4455"
+    iphone6s.name = 'iphone6s'
+    iphone6s.description = '手机'
+</script>

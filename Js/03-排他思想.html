@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>排他思想</title>
+    <style>
+        .current {
+            background-color: #daa520;
+        }
+    </style>
+</head>
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+
+
+
+</body>
+</html>
+
+<script>
+    var btns = document.getElementsByTagName("button");
+    for(var i = 0; i < btns.length; i++) {
+        btns[i].onclick = function() {
+            // this.style.backgroundColor = "#daa520";
+            //当我们每次点击，首先先清除所有人
+            for(var j=0; j< btns.length ; j++) {
+                btns[j].className = "";
+            }
+            //再剩下我自己
+            this.className = "current";
+        }
+    }
+</script>

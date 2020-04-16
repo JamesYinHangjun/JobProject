@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>七天免登录</title>
+    <script src="./js/common.js"></script>
+</head>
+<body>
+    用户名:<input type="text"><br/>
+    密&nbsp;码:<input type="password"><br/>
+    <label><input type="checkbox">七天免登录</label><br/>
+    <input type="button" value="登陆"><br/>
+
+    <script>
+        var aInput = document.getElementsByTagName("input");
+
+        // 先判断username 是否存在
+        if(getCookie("username")) {
+            aInput[0].value = getCookie("username");
+            aInput[1].value = getCookie("password");
+        }
+
+        aInput[3].onclick = function() {
+            var username = aInput[0].value;
+            var password = aInput[1].value;
+            if(aInput[2].checked) {
+                setCookie("username",username,7);
+                setCookie("password",password,7);
+            }
+        }
+    </script>
+
+</body>
+</html>
