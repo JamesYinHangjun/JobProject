@@ -11,6 +11,10 @@
         // 节流(throttle)：
         //     定时运行(间隔执行)
         //     在单位时间内只触发一次(如果在单位时间内触发多次，只执行一次)
+
+        // 应用场景: 鼠标不断点击触发
+
+        // delay时间内只执行一次fn
         function throttle(fn,delay) {
             var startTime = 0
             return function() {

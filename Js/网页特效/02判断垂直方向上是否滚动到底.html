@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>判断垂直方向上是否滚动到底</title>
+</head>
+<body>
+    <script>
+        // scrollTop 垂直方向上滚动的距离
+        let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        // clientHeight 内容可视区域的高度
+        let clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+        // scrollHeight为内容可视区域的高度加上溢出（滚动）的距离
+        let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+
+        // 避免没有数据的时候 重复执行 scrollHeight > clientHeight 
+        if(scrollHeight > clientHeight && scrollTop + clientHeight === scrollHeight) {
+        this.loadmore();
+        }
+    </script>
+</body>
+</html>
