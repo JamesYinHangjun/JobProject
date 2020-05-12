@@ -14,7 +14,7 @@
     <script>
 
         // 防抖(debounce):  （只执行最后一次)
-        //     多次触发事件时，并不执行hnadle函数,而是在延迟n秒后执行,
+        //     多次触发事件时，并不执行函数,而是在延迟n秒后执行,
         //     如果在n秒内又触发了事件，则重新计算时间
 
         // fn指要防抖的函数，delay指要延迟的时间
@@ -22,8 +22,11 @@
             var timer = null;
             return function() {    // 闭包
                 if(timer != null) {
-                    clearTimeout(timer)
+                    // 有timer
+                    clearTimeout(timer)  // 每当用户输入时把前一个setTimeout clear掉
                 }
+                // 然后又创建一个新的setTimeout,这样就能保证输入字符后,
+                // 在间隔内如果还有字符输入的话，就不会执行fn函数
                 timer = setTimeout(fn,delay)
             }
         }
