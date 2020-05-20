@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单版留言系统</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            padding: 100px;
+        }
+        
+        textarea {
+            width: 200px;
+            height: 100px;
+            border: 1px solid pink;
+            outline: none;
+            resize: none;
+        }
+        
+        ul {
+            margin-top: 50px;
+        }
+        
+        li {
+            width: 300px;
+            padding: 5px;
+            background-color: rgb(245, 209, 243);
+            color: red;
+            font-size: 14px;
+            margin: 15px 0;
+        }
+        /* 删除按钮 */
+        li a {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <!-- 核心思路: -->
+        <!-- 
+            1.点击按钮，就动态创建一个li,添加到ul里面
+            2.创建li 的同时，把文本域里面的值通过li.innerHTML赋值给li
+         -->
+
+         <textarea name="" id=""></textarea>
+         <button>发布</button>
+         <ul>
+     
+         </ul>
+
+         <script>
+             var txt = document.getElementsByTagName('textarea')[0]
+             var btn = document.getElementsByTagName('button')[0]
+             var ul = document.getElementsByTagName('ul')[0]
+
+             btn.addEventListener('click',function() {
+                 var li = document.createElement('li')
+                 if(!txt.value.trim()) {
+                     alert('内容不能为空，请输入内容！')
+                 } else {
+                    li.innerHTML = txt.value + "<a href='javascript:;'>删除</a>"
+                    // ul.appendChild(li)
+
+                    // 新发布的留言放在第一位
+                    ul.insertBefore(li,ul.children[0])
+
+                    // 点击删除按钮，删除当前元素的li
+                    var as = document.querySelectorAll('a')
+                    for(var i = 0; i < as.length; i++) {
+                        as[i].onclick = function() {
+                            // 当前是a,删除的是li,是a的父元素 this.parentNode
+                            ul.removeChild(this.parentNode)
+                        }
+                    }
+
+                    txt.value = ''
+                 }
+                 
+             })
+         </script>
+</body>
+</html>
