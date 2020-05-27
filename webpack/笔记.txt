@@ -1,3 +1,7 @@
+1.
+    src目录： 放源代码
+    dist目录: 存放需要发布的文件
+
 安装webpack
 npm i -g webpack-cli
 
