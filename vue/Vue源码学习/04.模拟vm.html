@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟vm</title>
+</head>
+<body>
+    <script>
+        // 利用defineProperty模拟vm
+        // 本来data中是没有msg的，而vue中通过const vm = new Vue()后使vm多了一个msg,vm就可以直接调用data中的msg数据了
+        // 本来一个对象没有这个东西,然后多了这个东西,就用defineProperty实现
+
+        const vm = {}
+        const data = {
+            msg: 'abc'
+        }
+        Object.defineProperty(vm, 'msg', {
+            get() {
+                return data.msg    // 给vm添加msg属性，值为get中返回的值    
+            },
+            set(val) {
+                data.msg = val     // 把val值赋值给data下的msg属性
+            }
+        })
+
+        console.log(vm)
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>冒泡排序</title>
+</head>
+<body>
+    <script>
+        // 相邻元素比较，大的数到后面去
+        // 比较趟数为元素长度-1
+
+        var arr = [3,4,3,5,5,6]
+        for(var i = 0; i < arr.length-1;i++) {    //遍历趟数
+            // 如果在某一趟的时候，发现没有元素进行交换，说明已经排好序了，剩下就不用排序了
+            let isSwapped = false
+
+            for(var j = 0; j < arr.length - 1  - i; j++) {   // 每一轮的遍历比较
+                if(arr[j] > arr[j+1]) {
+                    let temp = arr[j]
+                    arr[j] = arr[j+1]
+                    arr[j+1] =temp
+
+                    isSwapped = true
+                }
+            }    
+
+            if(!isSwapped) {
+                break;
+            }
+        }
+        console.log(arr)
+    </script>
+</body>
+</html>

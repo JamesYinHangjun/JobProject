@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟发布订阅</title>
+</head>
+<body>
+    <script>
+
+        // var bus = {
+        //     $on(){},
+        //     $emit(){}
+        // }
+        
+
+        // 构造函数
+        function eventEmitter() {
+
+        }
+
+        // 注册事件 --> 保存 事件类型 和对应的 事件处理函数
+        eventEmitter.prototype.$on = function(eventType, handler) {
+
+        }
+        // 触发事件 --> 取出对应的事件处理函数并且调用
+        eventEmitter.prototype.$emit = function() {
+
+        }
+
+        const bus = new eventEmitter() 
+
+        // 发布订阅模式
+        // 注册事件$on
+        bus.$on('a', (num)=>{})
+        // 触发事件$emit
+        bus.$emit('a',100)
+    </script>
+</body>
+</html>

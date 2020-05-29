@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证码</title>
+</head>
+<body>
+    <script>
+        // 验证码:验证是否是机器人
+
+        // 1.纯数字验证码
+        // n表示生成的是n位数字的验证码
+        // 每一位数字都是0-9的数 parseInt(Math.random() * 10)
+        // function numCode(n) {
+        //     var arr = []
+        //     for(var i = 0; i < n; i++) {
+        //         var num = parseInt(Math.random() * 10)
+        //         arr.push(num)
+        //     }
+        //     return arr.join("")
+        // }
+        // alert(numCode(6))
+
+
+        // 2.数字和字符组成的验证码
+        // 0-9       a-z        A-Z
+        // ASCII     97-122     65-90 
+        // 通过Ascii值来判断，先生成0-122的数字，再进行判断
+        // 如果是数字，直接加入到数组中，否则，转化为对应的字母后再加入数组
+
+        function numCode(n) {
+            var arr = []
+            for(var i = 0; i < n; i++) {
+                var num = parseInt(Math.random() * 123)
+                if( num >= 0 && num <= 9) {   //是数字，直接添加到数组中
+                    arr.push(num)
+                } else if( num >= 97 & num <= 122 || num >65 && num <=90) {
+                    arr.push(String.fromCharCode(num))   //根据Asicc值找出对应的字母
+                } else {
+                    i--     // 10 - 64
+                }
+            }
+            return arr.join("")
+        }
+        console.log(numCode(6))
+    </script>
+</body>
+</html>

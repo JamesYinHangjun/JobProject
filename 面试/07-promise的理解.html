@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promise的理解</title>
+</head>
+<body>
+    <script>
+        // function fn() {
+        //     setTimeout(() => {
+        //         var data = 123
+        //         return data
+        //     },1000)
+        // }
+        // var res = fn()
+        // console.log(res)  // undefined 因为这个return 是定时器中函数的return(异步) ，外面的函数并没有return 
+
+
+        // 异步一般会用到回调
+        // function fn(callback) {
+        //     setTimeout(() => {
+        //         var data = 123
+        //         callback(data)
+        //     },1000)
+        // }
+        // fn(function(res) {
+        //     console.log(res)
+        // })
+        
+
+        // 这时会先打印2，再打印1
+        // setTimeout(function() {
+        //     console.log(1)
+        // },1000)
+        // setTimeout(function() {
+        //     console.log(2)
+        // },500)
+
+        // 如果想先打印1，再打印2，如下，但是这样会产生回调地狱的问题
+        // setTimeout(function() {
+        //     console.log(1)
+        //     setTimeout(function() {
+        //         console.log(2)
+        //     },500)
+        // },1000)
+
+        
+    </script>
+</body>
+</html>
