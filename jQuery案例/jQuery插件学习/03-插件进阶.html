@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+           <!-- 
+               1.确保$ 永远指向 jQuery
+                    (function($) {
+                        //...
+                    })(jQuery) 
+
+                2. 正确使用;
+                    ;(function($) {
+                        //...
+                    })(jQuery)
+
+                3.尽可能返回jQuery 对象
+                    为了实现链式调用，尽可能返回对象本省  
+                    return this
+
+
+                4. jQuery 的固定格式
+                    ;(function($) {
+                        var _that;                       // 定义变量存储this指向的调用对象本身
+
+                        function _插件名() {
+                            // 实现插件功能的代码
+
+                            return _that;                // 返回this,是为了实现链式调用
+                        }
+
+                        $.fn.插件名 = _插件名;            // 挂载到原型上
+                    })(jQuery);
+            -->
+</body>
+</html>

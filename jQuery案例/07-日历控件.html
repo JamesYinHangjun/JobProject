@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="jquery.1.8.2.js"></script>
+</head>
+<body>
+
+       <script type="text/javascript">
+           //全部包裹
+           var sookerTime = (function ($) {
+               var OBJ;
+               function isLeap(year) { return (year % 100 == 0 ? (year % 400 == 0 ? 1 : 0) : (year % 4 == 0 ? 1 : 0)); }
+               function isValid(d) { return (d.getTime() - (new Date()).getTime() < 0) ? true : false; } //是否在今天以后
+               function setDate(year, month) {     //建立日期table
+                   var n1 = new Date(year, month, 1),
+                       firstday = n1.getDay(),
+                       mdays = new Array(31, 28 + isLeap(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31),
+                       rows = Math.ceil((mdays[month] + firstday) / 7),
+                       table = $("<table>", { "class": "days" }),
+                       tbody = $("<tbody>");
+                   $("#calendar").find(".days").remove();
+                   for (var i = 0; i < rows; i++) {
+                       var tr = $("<tr>");
+                       for (j = 0; j < 7; j++) {
+                           var idx = i * 7 + j,
+                               d = idx - firstday + 1;
+                           if (d <= 0 || d > mdays[month]) {   //无效日期
+                               d = " "
+                           }
+                           var td = $("<td>", { html: d }).appendTo(tr);
+                           if (isValid(new Date(year, month, d))) {  //今天以后的时间都不绑定时间
+                               td.addClass("before");
+                               td.hover(function () {
+                                   $(this).addClass("day");
+                               }, function () { $(this).removeClass("day"); }).click(function () {
+                                   OBJ.attr("value", $("#calendar .year").attr("value") + "-" + (parseInt($("#calendar .month").attr("value")) + 1) + "-" + $(this).text());
+                                   $("#calendar").css("display", "none");
+                               });
+                           }
+                       }
+                       tr.appendTo(tbody);
+                   }
+                   tbody.appendTo(table);
+                   $("#calendar").append(table);
+               }
+               function createTime() {
+                   var calendar = $("<div>", { "class": "pc_caldr", id: "calendar" }),
+
+                           td = new Date(),
+                           of = OBJ.offset();
+                   if (document.getElementById("calendar")) {
+                       calendar = $("#calendar").css({ left: of.left, top: of.top + 18, display: "block" });
+                       setDate(td.getFullYear(), td.getMonth());
+                       $("#calendar .year").attr("value", td.getFullYear());
+                       $("#calendar .month").attr("value", td.getMonth());
+                   } else {
+                       var se = "<div class='selector'><select class='month'><option value='0'>一月</option><option value='1'>二月</option><option value='2'>三月</option><option value='3'>四月</option><option value='4'>五月</option><option value='5'>六月</option><option value='6'>七月</option><option value='7'>八月</option><option value='8'>九月</option><option value='9'>十月</option><option value='10'>十一月</option><option value='11'>十二月</option></select><select class='year'><option value='2009'>2009</option><option value='2010'>2010</option><option value='2011'>2011</option></select></div><ul class='weeks'><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul>";
+                       calendar.css({ left: of.left, top: of.top + 18 }).html(se).appendTo($("body"));
+                       setDate(td.getFullYear(), td.getMonth());
+                       $("#calendar .year").attr("value", td.getFullYear());
+                       $("#calendar .month").attr("value", td.getMonth());
+                       bindClick();
+                   }
+               }
+               function bindClick() {   //给下拉列表绑定时间
+                   var a = $("#calendar .month"),
+                      b = $("#calendar .year");
+                   a.change(function () {
+                       setDate(b.attr("value"), $(this).attr("value"));
+                   });
+                   b.change(function () {
+                       setDate($(this).attr("value"), a.attr("value"));
+                   });
+               }
+               return {
+                   init: function (obj) {   //返回调用的接口
+                       OBJ = obj;
+                       createTime();
+                   }
+               }
+           })(jQuery);
+
+           //使用方法
+           $(".tiemin").focus(function(){
+              sookerTime.init($(this));
+            });
+       </script>
+</body>
+</html>

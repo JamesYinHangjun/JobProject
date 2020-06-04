@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>五角星评论案例</title>
+    <script src="jquery-1.8.2.js"></script>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        .comment {
+            font-size:40px;
+            color:teal;
+        }
+        .comment li {
+            float:left;
+        }
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <ul class="comment">
+        <li>☆</li>
+        <li ts="122" class="ss">☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+
+    <script>
+        $(document).ready(function() {
+            var wjx_none = '☆';
+            var wjx_sel = '★';
+
+            $('.comment li').mouseenter(function() {
+                //鼠标移入，自己和前面的兄弟变实心，其余变空心
+                $(this).text(wjx_sel).prevAll().text(wjx_sel).end().nextAll().text(wjx_none);
+            }).click(function(){
+                // 鼠标点击后，给自己添加clicked类，其余的清除clicked类
+                $(this).addClass('clicked').siblings().removeClass('clicked');
+            });
+
+            // 当鼠标移开评分控件时，实心显示到被点击的五角星上
+            $('.comment').mouseleave(function(){
+                $('.comment li').text(wjx_none);   // 先给所有五角星变成空心
+                $('.clicked').text(wjx_sel).prevAll().text(wjx_sel).end().nextAll().text(wjx_none);
+            });
+
+            $('li').click(function() {
+                $(this).data('clicked',true);
+
+                if($(this).data('clicked') === true){
+
+                }
+            });
+        })
+    </script>
+</body>
+</html>

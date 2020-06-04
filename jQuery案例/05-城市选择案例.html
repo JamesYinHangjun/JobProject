@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>城市选择案例</title>
+    <script src="jquery-1.8.2.js"></script>
+    <style>
+        select {
+            width: 200px;
+            background-color: teal;
+            height: 200px;
+            font-size: 20px;
+        }
+        .btn-box {
+            width: 30px;
+            display: inline-block;
+            vertical-align: center;
+        }
+    </style>
+
+    <script>
+        $(function() {
+            $('#btn-sel-all').on('click',function(){
+                // 把所有的城市 从左边 移动到右边select中去
+                $('#src-city option').appendTo('#tar-city');
+            });
+
+            $('#btn-sel-none').on('click',function(){
+                // 把所有的城市 从左边 移动到右边select中去
+                $('#tar-city option').appendTo('#src-city');
+            });
+            $('#btn-sel').on('click',function(){
+                // 把所有的城市 从左边 移动到右边select中去
+                $('#src-city option:selected').appendTo('#tar-city');
+            });
+            $('#btn-back').on('click',function(){
+                // 把所有的城市 从左边 移动到右边select中去
+                $('#tar-city option:selected').appendTo('#src-city');
+            });
+        })
+    </script>
+</head>
+<body>
+    <select name="src-city" id="src-city" multiple>
+        <option value="1">北京</option>
+        <option value="2">上海</option>
+        <option value="3">深圳</option>
+        <option value="4">杭州</option>
+        <option value="5">安徽</option>
+    </select>
+
+    <div class="btn-box">
+        <button id="btn-sel-all"> &gt;&gt; </button>
+        <button id="btn-sel-none"> &lt;&lt; </button>
+        <button id="btn-back"> &lt; </button>
+        <button id="btn-sel"> &gt; </button>
+    </div>
+
+    <select name="tar-city" id="tar-city" multiple>
+
+    </select>
+</body>
+</html>

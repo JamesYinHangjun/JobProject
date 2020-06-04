@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jquery动画</title>
+    <style>
+        html,body,div {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+            background: #cfcfcf;
+            display: none;
+        }
+    </style>
+    <script src="jquery-1.8.2.js"></script>
+</head>
+<body>
+    <input type="button" value="显示" id="btn">
+    <div class="box"></div>
+
+    <script>
+        // show() hide() toggle()
+        $(function() {
+            $("#btn").on("click",function() {
+                $(".box").show();
+            })
+            // $('#btn').on('click',function() {
+            //     $('.box').hide()
+            // })
+        })
+    </script>
+</body>
+</html>
