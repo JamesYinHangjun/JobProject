@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-遍历元素</title>
+    <script src="../jquery-1.8.2.js"></script>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+
+    <script>
+        // .each(function(索引,dom元素){})   dom元素要转为jquery元素才行
+
+        let arr = ['red','blue','pink']
+        $(function() {
+            let sum = 0
+            $("div").each(function(index,item) {
+                // console.log(index,item)
+                // 求每一项的总和
+                sum +=parseInt($(item).text())
+
+                $(item).css('color',arr[index])
+            })
+            console.log(sum)
+
+
+        })
+    </script>
+</body>
+</html>

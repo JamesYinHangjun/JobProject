@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-事件处理</title>
+    <script src="../jquery-1.8.2.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <script>
+        // 1.单个事件处理
+        // $(function() {
+        //     $('div').click(function() {
+        //         $(this).css('backgroundColor','blue')
+        //     })
+
+        //     $('div').mouseenter(function() {
+        //         $(this).css('background',"skyblue")
+        //     })
+        // })
+        
+
+        // 2.事件处理on:可以在匹配元素上绑定一个或者多个事件处理函数
+        $('div').on({
+            mouseenter:function() {
+                $(this).css('background',"skyblue")
+            },
+            click: function() {
+                $(this).css('background',"blue")
+            }
+        })
+
+    </script>
+</body>
+</html>
