@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>敏感词过滤</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    
+    <script>
+        /*
+            敏感词过滤：
+                表单元素：获取其中内容，通过.value属性
+                双标签节点：用innerHTML属性
+
+            要求：
+                敏感词都过滤
+                将敏感词都替换成*
+                replace
+        */
+
+        // 装有敏感词
+            var arr = [/靠/ig, /tmd/ig, /nm/ig]
+
+        window.onload = function() {
+            var oTxt = document.getElementById('txt1')
+            var odiv = document.getElementById('msg')
+            var btn = document.getElementsByTagName('button')[0]
+
+            btn.addEventListener('click',function() {
+                var oValue = oTxt.value
+                for(var i = 0; i < arr.length; i++) {
+                    oValue = oValue.replace(arr[i], '*')
+                }
+
+                odiv.innerHTML = oValue
+                oTxt.value = ''
+            })
+        }
+    </script>
+</head>
+<body>
+    <textarea name="" id="txt1" cols="30" rows="10"></textarea>
+    <button>发布</button>
+    <div id='msg'></div>
+</body>
+</html>

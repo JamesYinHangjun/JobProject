@@ -5,6 +5,7 @@ function _new(func) {
     // 前两步相当于 let obj = Object.create(fn.prototype)
 
     // 使用apply调用构造函数，属性和方法添加到this 引用的对象中
+    // 将构造函数的this指向这个对象
     let result = func.apply(obj)
 
     if(result && (typeof result == "object" || typeof result == "function")) {
