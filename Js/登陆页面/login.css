@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+#app {   
+    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592722967038&di=8f0f9d27458ec8dc5a5796c3c63e2b5b&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F03%2F20180703150734_zjfpd.thumb.700_0.jpg);
+    background-size: cover;
+     background-position: center center; 
+     background-repeat: no-repeat;  
+     background-attachment: fixed;
+    
+     /* background: rgba(0,0,0,.8);/ */
+     /* box-shadow: 0 15px 25px rgba(0,0,0,.5); */
+}
+.el-row {
+    height: 100%;
+}
+#app h3 {
+    text-align: center;
+}
+
+
+/* 登陆和注册按钮的父元素 */
+.el-form-item__content {
+    display: flex;
+    justify-content:center;
+    /* padding-left: -100px; */
+}
+/* 登陆按钮 */
+.el-button--primary {
+    margin-left: -100px;
+}
+
+/* 手机号和密码文字颜色 */
+.el-form-item__label {
+    color: white;
+}
+/* 手机号和密码的文本框 */
+.el-input__inner {
+    width: 300px;
+}
