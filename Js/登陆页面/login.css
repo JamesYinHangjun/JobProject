@@ -5,7 +5,7 @@ body {
 #app {   
     background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592722967038&di=8f0f9d27458ec8dc5a5796c3c63e2b5b&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201807%2F03%2F20180703150734_zjfpd.thumb.700_0.jpg);
     background-size: cover;
-     background-position: center center; 
+     /* background-position: center center;  */
      background-repeat: no-repeat;  
      background-attachment: fixed;
     

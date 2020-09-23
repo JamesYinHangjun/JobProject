@@ -10,7 +10,7 @@ var fs = require('fs')
 
 
 // 2.读写文件
-// 同步:fs.readFileSync(读哪个文件,[options],回调函数(错误优先))
+// 同步(等待和阻塞):fs.readFileSync(读哪个文件,[options],回调函数(错误优先))
 // 异步: fs.readSync()
 
 // var content = fs.readFileSync('hello.txt',{flag:'r',encoding:"utf-8"})
@@ -45,3 +45,13 @@ var w1 = fsRead('hello.txt')
 w1.then(function(res) {
     console.log(res)
 })
+
+
+// 读取多个文件
+async function ReadList() {
+    var file2 = await fsRead('hello.txt')
+    var file3 = await fsRead(file2 + ".txt")
+    var file3Content = await fsRead(file3 + ".txt")
+    console.log(file3Content)
+}
+ReadList()
