@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>默认参数</title>
+</head>
+<body>
+    <script>
+
+        // 在ES6中，直接为参数赋值，实现默认参数
+        // 如下, 没有传入使用red,传入了就是用传入的值
+        function demo(color = "red") {
+            // 1. ||适配默认值， 但是遇到传入的空值或者是false的值，是识别不了的
+            // color = color || "red"
+
+            // 2.三元运算符适配，但是会很麻烦
+            color = color === undefined ? "red" : color
+            console.log(color)
+        }
+
+        // 执行函数并传入参数
+        demo()
+        demo(0)
+        demo("")
+        demo(false)
+        demo(NaN)
+        demo(undefined)
+        demo('green')
+    </script>
+</body>
+</html>

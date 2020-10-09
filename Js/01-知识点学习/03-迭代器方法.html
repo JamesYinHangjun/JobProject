@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器方法</title>
+</head>
+<body>
+    <script>
+        // ES6为了遍历数组成员，拓展了三个迭代器方法
+        /*
+            keys: 获取索引值
+            values:获取成员值
+            entries:获取索引值以及成员值： [index,item]
+        */
+
+
+        var arr = ["red", "blue", "green", "skyblue"]
+        // 创建迭代器
+        var result = arr.keys()
+        console.log(result)
+
+        // 迭代器中提供了一个next(),用来遍历每一个成员，每调用一次next()返回一个成员，当dong为true时，就表示遍历已经完成
+        console.log(result.next())
+        console.log(result.next())
+    </script>
+</body>
+</html>

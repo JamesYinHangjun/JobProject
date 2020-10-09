@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环介绍</title>
+</head>
+<body>
+    <!-- for of    for   for in 
+        for用于遍历数组或类数组对象
+        for in 用于遍历对象
+        for of 循环遍历实现了迭代器接口的对象，包括数组，但无法使用索引值
+
+        for和for in 都不能遍历迭代器对象
+    -->
+
+    <script>
+        var arr = ["red", "blue", "green", "skyblue"]
+        // 创建迭代器
+        var result = arr.values()
+
+        for( let item of result) {
+            console.log(item)
+            // 遍历到蓝色停止
+            if(item == "blue") {
+                break;
+            }
+        }
+
+
+        //    无法访问索引值，但我们可以自己实现
+        var index = 0
+        for(let item of arr) {
+            // 在内部手动更新循环变量
+            console.log(item,index)
+            index++
+        }
+    </script>
+</body>
+</html>
