@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fillhefilter</title>
+</head>
+<body>
+    <!-- <script>
+        var arr = new Array(5)
+        // 这个数组一开始是不能遍历的，所以可以使用fill来填充。然后就可以遍历了
+        arr.fill(1)
+        // 填充数组
+        // arr.fill(function() {
+            // console.log(111)
+        // })
+        arr.forEach(function(item,index) {
+            console.log(item,index)
+        })
+
+
+        // 实现fill
+        if(!Array.prototype.fill) {
+            Array.prototype.fill = function(item) {
+                // 遍历成员，设置成员
+                for( var i = 0; i < this.length; i++) {
+                    // 设置成员
+                    this[i] = item
+                }
+                // 返回数组
+                return this
+
+            }
+        }
+    </script> -->
+
+
+
+    <script>
+        // filter过滤
+        var arr1 = ["小沈阳","宋小宝","利古拉斯"]
+
+        // 筛选出带有小字的成员
+        var result = arr1.filter(function(item,index) {
+            return item.indexOf("小") >= 0
+        })
+        console.log(result)
+    </script>
+</body>
+</html>
