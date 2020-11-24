@@ -1,0 +1,27 @@
+## gulp使用
+    1.使用npm install gulp 下载gulp库文件
+    2.在项目根目录下建立gulpfile.js文件
+    3.重构项目的文件夹结构
+        src放置源代码文件
+        dist目录放置构建后文件
+    4.在gulpfile.js文件中编写任务
+    5.在命令行中执行gulp任务
+        1) 安装gulp-cli命令行工具，这样就多了一个gulp这样的命令
+
+
+## gulp中提供的方法
+    1.gulp.src(任务名称,回调函数)  获取任务要处理的文件
+    2.gulp.dest() 输出文件
+    3.gulp.task() 建立gulp任务
+    4.gulp.watch() 监控文件的变化
+
+
+## gulp插件
+    引用：const htmlmin = require('gulp-htmlmin');
+        1) gulp-htmlmin   html文件压缩
+        2) gulp-file-include  公共文件包含(提取) 
+        3) gulp-less          less语法转换
+        4) gulp-csso          压缩css
+        5) gulp-babel         js语法转换
+        6) gulp-uglify        压缩混淆js
+        7) browsersync        浏览器实时同步

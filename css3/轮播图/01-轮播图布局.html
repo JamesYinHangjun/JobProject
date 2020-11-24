@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图布局</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* 容器 */
+        .outer {
+            width: 830px;
+            height: 482px;
+            /* background-color: #bfa; */
+            margin: 50px auto;
+
+            position: relative;
+        }
+
+        ul li a img {
+            width: 830px;
+            height: 482px;
+        }
+
+        /* 设置li的位置 */
+        .img-list li {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+
+
+        /* 导航圆点 */
+        .pointer {
+            width: 160px;
+            position: absolute;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            top: 322px;
+        }
+        .pointer a {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin: 0 5px;
+            background-color: rgba(255, 255, 255, .5);
+            border-radius: 50%;
+        
+        }
+        .pointer a:hover{
+            background-color: rgba(255, 255, 0, .8);
+        }
+
+    </style>
+</head>
+<body>
+    <!-- 轮播图容器 -->
+    <div class="outer">
+        <ul class="img-list">
+            <li><a href="#"><img src="./images/01.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/02.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/03.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/04.jpg" alt=""></a></li>
+            <li><a href="#"><img src="./images/05.jpg" alt=""></a></li>
+        </ul>
+
+        <!-- 导航圆点 -->
+        <div class="pointer">
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+    </div>
+</body>
+</html>
