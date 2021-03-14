@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        h3 {
+            font-size:28px;
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+      <h3>XMLHttpRequest</h3>
+      <p id="result"></p>
+
+      <script type="text/javascript">
+              var xhr = new XMLHttpRequest();
+              //console.log(xhr.readystate);
+
+              // 设置请求行
+              xhr.open('post','01-ajax.php');
+              //console.log(xhr.readystate);
+
+              // 设置请求头(post请求设置方式)(请求头是键值对方式)
+              xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+              //console.log(xhr.readystate);
+
+              // 设置请求主体
+              xhr.send('username=itcast&age=10');
+             // xhr.send();
+              //console.log(xhr.readystate);
+
+              // 接收服务器响应
+              xhr.onreadystatechange = function(){
+                 // console.log(xhr.readystate);
+                  if(xhr.readystate == 4){
+                      //console.log('响应完成');
+
+                      // 响应主体
+                      //xhr.responseText
+                      console.log(xhr.responseText);
+
+                      // 通过DOM操作放到页面上，展示给用户看
+                      document.querySelector('#result').innerHTML = xhr.responseText;
+                  }
+              }
+      </script>
+  </body>
+</html>

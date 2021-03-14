@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>01-文本框提示消息案例</title>
+  </head>
+  <body>
+      <!--<input type="text" placeholder="老马">-->
+      <input type="text" id="txt2" value="老马">
+
+      <script type="text/javascript">
+          window.onload = function() {
+            var txt2 = document.getElementById('txt2');
+            txt2.style.color = "#ccc";  //文档加载完成后，直接设置提示文本为灰色
+
+            //文本框2 获得焦点后，判断文本框值是否等于老马，如果是就清空
+            txt2.onfocus = function() {
+              if(txt2.value =="老马"){
+                txt2.value="";
+                txt2.style.color ="#000";
+              }
+            };
+
+            //文本框2 离开焦点后，判断文本框值是否为空，空则设置回老马
+            txt2.onblur=function(){
+              if(txt2.value==""){
+                txt2.value = "老马";
+                txt2.style.color = "#ccc";
+              }
+            };
+          };
+      </script>
+  </body>
+</html>

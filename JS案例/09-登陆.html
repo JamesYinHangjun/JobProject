@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+        body {
+            margin:0px;
+            padding:0px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .fl_l {float:left;}
+        .fl_r {float:right;}
+        .clearfix {
+            content:"";
+            display:block;
+            clear:both;
+        }
+        .login {
+            width: 427px;
+            height: 300px;
+            margin: 50px auto;
+            box-shadow:0 0 5px 1px #aaa;
+            border-radius: 8px;
+        }
+        .login ul {
+            padding: 30px 0;
+            list-style: none;
+        }
+        .login ul li {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .login ul li span {
+            width: 90px;
+            line-height: 40px;
+            text-align: right;
+            padding:0 5px;
+        }
+        .login ul li input {
+            width:290px;
+            line-height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .login ul li input:focus + div.tips {
+            display:block;
+        }
+        .login ul li div.tips {
+            position: absolute;
+            left: 415px;
+            top:0px;
+            width: 250px;
+            padding: 8px;
+            display: none;
+            background:#0099ff;
+            color: white;
+            border-radius: 8px;
+        }
+        .login ul li div.tips:before {
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            margin-top: -10px;
+            content: '';
+            width: 0px;
+            height: 0px;
+            border: 10px solid transparent;
+            border-left: none;
+            border-right-color: #09f;
+        }
+    </style>
+  </head>
+  <body>
+      <div class="login">
+          <form  action="" method="">
+              <ul>
+                  <li class="clearfix">
+                      <span class="fl_l">user</span>
+                      <input class="fl_l" type="text" />
+                      <div class="tips">
+                          用户名必须为4-16位数字或者英文字母
+                      </div>
+                  </li>
+                  <li class="clearfix">
+                      <span class="fl_l">password</span>
+                      <input class="fl_l" type="password" />
+                      <div class="tips">
+                          用户名必须为4-16位数字或者英文字母
+                      </div>
+                  </li>
+              </ul>
+          </form>
+      </div>
+  </body>
+</html>

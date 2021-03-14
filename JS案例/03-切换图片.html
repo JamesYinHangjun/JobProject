@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>03-切换图片</title>
+  </head>
+  <body>
+      <input type="button" value="切换图片" id="btn">
+      <br>
+      <img src="images/0.png" alt="" id="img">
+  </body>
+
+  <script type="text/javascript">
+      var arr = [
+        "images/0.png",
+        "images/1.png",
+        "images/2.png",
+        "images/3.png",
+        "images/4.png",
+        "images/5.png",
+        "images/6.png",
+        "images/7.png",
+        "images/8.png"
+      ];
+
+      //记录索引，默认为零
+      var index = 0;
+
+      // 1.0 给按钮注册事件
+      var btn = document.getElementById("btn");
+      btn.onclick = function() {
+          var img = document.getElementById("img");
+          index++;
+          img.src = arr[index];
+
+          // 3.0 如果是最后一张图片，切换到第一张图片
+          if(index === arr.length-1) {
+              index = -1;
+          }
+      }
+  </script>
+</html>

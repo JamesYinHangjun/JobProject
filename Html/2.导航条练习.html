@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航条</title>
+    <style>
+        /* 清除默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .nav {
+            list-style: none;
+            /* 为ul设置一个背景颜色 */
+            background-color: #6495ed;
+            width: 1000px;
+            margin: 50px auto;
+
+            /* 解决父元素的高度塌陷问题 */
+            overflow: hidden;
+        }
+
+        /* 设置li */
+        .nav li {
+            /* 设置浮动后，父元素高度塌陷了，需要给父元素设置overflow:hidden */
+            float: left;
+        }
+
+        .nav a {
+            display: block;
+            /* 这里只能给a设置宽度，因为其中能点的只有a，不可以给li设置 */
+            width: 250px;
+            /* 设置上下内边距 */
+            padding: 5px 0;
+            /* 设置字体和加粗 */
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+        }
+        .nav a:hover {
+            background-color: #c00;
+        }
+    </style>
+</head>
+<body>
+    <ul class="nav">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">新闻</a></li>
+        <li><a href="#">联系</a></li>
+        <li><a href="#">关于</a></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>menu</title>
+    <style>
+        .class {
+            color:pink;
+        }
+    </style>
+  </head>
+  <body>
+      <div id="menu">
+          <ul>
+              <li class="current"><a href="http://www.baidu.com">首页</a></li>
+              <li><a href="javascript:alert("123")">播客</a></li>
+              <li><a href="javascript:'123'">博客</a></li>
+              <li><a href="javascript:void(0)">相册</a></li>
+              <li><a href="javascript:void(0)">关于</a></li>
+              <li><a href="javascript:void(0)">帮助</a></li>
+          </ul>
+      </div>
+
+      <script type="text/javascript">
+          var lis = document.querySelectorAll('li');
+          for(var i = 0; i<lis.length; i++) {
+              lis[i].onclick = function() {
+                  lis[i].className = "current"
+              }
+          }
+      </script>
+  </body>
+</html>

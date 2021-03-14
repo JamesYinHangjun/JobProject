@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        .gray {
+          color:gray;
+        }
+    </style>
+  </head>
+  <body>
+      <input type="text" id="txtSearch" class="gray" value="请输入搜索关键字"><br>
+      <input type="button" value="搜索">
+  </body>
+
+  <script type="text/javascript">
+      // 当文本框获得焦点onfocus时，如果文本框中的内容是 请输入搜索关键字，则清空文本框
+      var txtSearch = document.getElementById("txtSearch");
+      // 当文本框获得焦点时
+      txtSearch.onfocus = function() {
+          // 判断当前文本框中的内容
+          if(this.value === "请输入搜索关键字") {
+              this.value="";
+              this.className="";
+          }
+      }
+
+      // 当文本框失去焦点onblur时，如果文本框中的内容为空，则设置文本框中的内容为 请输入搜索关键字
+      txtSearch.onblur = function() {
+          //判断文本框中的内容为空
+          if(this.value.length === 0) {
+            this.value="请输入搜索关键字";
+            this.className="gray";
+          }
+      }
+  </script>
+</html>

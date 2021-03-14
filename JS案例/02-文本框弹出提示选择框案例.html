@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>02-文本框弹出提示选择框案例</title>
+    <style>
+        html,body,div,input,ul,li {
+          padding: 0;
+          margin: 0;
+        }
+
+        .search-box-wrap {
+          margin:0 auto;
+          width:300px;
+          height: 400px;
+          padding-top: 30px;
+          position: relative;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .search-box-wrap .list {
+          border: 1px solid #ddd;
+          width: 198px;
+          display: none;
+          position: absolute;
+        }
+
+        .search-box-wrap .list li {
+            height: 25px;
+            line-height: 25px;
+            padding-left: 5px;
+        }
+
+        .search-box-wrap .list li:hover {
+          background-color: #eee;
+          cursor:pointer;
+        }
+
+        .txt-search {
+          border-width:2px;
+          width: 191px;
+          padding-left: 5px;
+          height: 20px;
+          line-height: 20px;
+        }
+    </style>
+  </head>
+  <body>
+      <div class="search-box-wrap">
+          <input type="text" id="txtsearch" class="txt-search">
+          <ul class="list" id="tipList">
+              <li>老马1</li>
+              <li>老马2</li>
+              <li>老马3</li>
+              <li>老马4</li>
+              <li>老马5</li>
+          </ul>
+      </div>
+
+      <script type="text/javascript">
+          //当文本框获得焦点，提示框显示，失去焦点，提示框关闭
+          (function(){
+              //模拟的块级作用域，不会影响全局的变量
+              window.onload = function(){
+                  var txtsearch = document.getElementById("txtsearch");
+                  var tipList = document.getElementById("tipList");
+                  var liList = tipList.getElementsByTagName("li");
+                  txtsearch.onfocus = function(){
+                    //弹出提示框
+                    tipList.style.display = "block";
+                    //弹出的提示框，不能影响原来的流式布局
+                  };
+
+                  txtsearch.onblur = function() {
+                    //关闭提示框
+                    tipList.style.display ="none";
+                  };
+
+                  //给所有li标签绑定点击事件，实现li点击后，把li上的文本放到文本框上去
+                  for(var i = 0;i < liList.length; i++) {
+                      //这里不用onclick ,是因为当点击li的时候,失去焦点会和这个事件发生冲突
+                      //点击事件和失去焦点的执行顺序
+                      //第一步 先执行mousedown事件 。 事件中：会让被点击的元素获得焦点，那么原来的
+                      //       获得焦点的元素就会失去焦点
+                      // mousedown -> 原来获得焦点元素blur事件 -> 当前元素的mouseup事件 -> click事件
+
+                      //如果mousedown事件中，阻止默认行为，那么次元素就不会获得焦点
+                      liList[i].onmousedown = function(){
+                        var txt = this.innerHTML;  // this===liList[i]
+                        txtsearch.value = txt;   //把li标签上的文本设置到文本框上去
+                      }
+                  };
+
+
+              }
+          })();
+      </script>
+  </body>
+</html>

@@ -1,1 +1,0 @@
-console.log('core.js文件输出的内容')

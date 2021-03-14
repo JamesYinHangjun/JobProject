@@ -1,1 +1,0 @@
-console.log('index.js文件输出的内容')
