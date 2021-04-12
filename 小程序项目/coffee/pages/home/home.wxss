@@ -1,0 +1,43 @@
+swiper{
+  /* 设计师给的图片的尺寸都是一样的，这里给的都是1080 * 720的尺寸，宽度是100vw，相应的可以计算出图片的高度 */
+  height: calc(100vw/1000*720);
+}
+
+swiper image {
+  /* 设置图片宽度平铺铺满 */
+  width: 100vw;
+}
+
+
+
+/* 第二部分 */
+.title {
+  height: 100rpx;
+  background: #fff;
+  position: relative;
+}
+
+.title .line {
+  width: 40%;
+  height: 4rpx;
+  background: #999;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.title .title_name {
+  width: 30%;
+  text-align: center;
+  background: #fff;
+  line-height: 100rpx;
+  /* 把文字盖在线上，层级 */
+  margin: auto;
+  position: relative;
+  z-index: 10;
+}
+
+
