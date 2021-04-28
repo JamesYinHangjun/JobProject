@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>拖拽-面向过程</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 思路：  
+        1.鼠标按下时，可以获取到鼠标当前的位置，当鼠标拖拽后，会获取到新的鼠标位置，两个位置相减就会得到鼠标拖拽的距离
+        2.盒子一开始的位置加上鼠标拖拽的距离，会得到盒子新的位置坐标 -->
+
+    <div id="box"></div>
+
+    <script>
+        // el元素、atrr属性、val值
+        function css(el,attr,val) {
+            // 如果没有传入元素
+            if(val === undefined) {
+                return parseFloat(getComputedStyle(el)[attr])
+            }
+            el.style[attr] = val + "px"
+        }
+
+
+        {   
+            let box = document.querySelector('#box')
+            // 鼠标一开始的位置
+            let startMouse = {}
+            // 元素一开始的位置
+            let startEl = {}
+
+            // 当鼠标移动时，得到现在鼠标的位置和鼠标移动的距离
+            let move = (e) => {
+                let nowMouse = {
+                    x: e.clientX,
+                    y: e.clientY
+                }
+                let disMouse = {
+                    x: nowMouse.x - startMouse.x,
+                    y: nowMouse.y - startMouse.y
+                }
+
+                css(box,"left",startEl.x + disMouse.x)
+                css(box,"top",startEl.y + disMouse.y)
+                console.log(disMouse)
+            }
+
+            // 鼠标按下时，获取鼠标的位置和元素的位置
+            box.addEventListener('mousedown', (e) => {
+                startMouse = {
+                    x: e.clientX,
+                    y: e.clientY
+                }
+
+                startEl = {
+                    x: css(box,"left"),
+                    y: css(box,"top")
+                }
+                console.log(startEl)
+
+                // 这里加给document事件，而不是加给box，是因为如果鼠标拖拽速度过快，box容易甩出去
+                document.addEventListener('mousemove',move)
+                document.addEventListener("mouseup", () => {
+                    document.removeEventListener("mousemove",move)
+                },{once: true})
+                e.preventDefault();
+            })
+        }
+    </script>
+</body>
+</html>

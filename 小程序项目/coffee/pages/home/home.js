@@ -15,6 +15,16 @@ Page({
       "/images/banner/baner2.jpg",
       "/images/banner/baner3.jpg",
       "/images/banner/baner4.jpg"
+    ],
+    arr: [
+      "/images/home/card01.jpg",
+      "/images/home/card02.jpg",
+      "/images/home/card03.jpg",
+      "/images/home/card04.jpg",
+      "/images/home/card05.jpg",
+      "/images/home/card06.jpg",
+      "/images/home/card07.jpg",
+      "/images/home/card08.jpg"
     ]
   },
 

@@ -11,9 +11,17 @@
 <!-- 第二部分
     先定位一个横线，再把文字盖在上面 -->
 
-    <view class="title">
-      <view class="line"></view>
-      <view class="title_name">咖啡的故事</view>
-    </view>
+<view class="title">
+  <view class="line"></view>
+  <view class="title_name">咖啡的故事</view>
+</view>
+
+<scroll-view class="scroll-view_H" scroll-x="true" style="width: 100%" wx:for="{{arr}}">
+  <view class="scroll-view-item_H">
+    <image src="{{item}}" mode="widthFix"></image>
+  </view>
+
+</scroll-view> 
+
 
 <!-- 以后只要有图片标签，都要在其中加上mode="widthFix" -->
