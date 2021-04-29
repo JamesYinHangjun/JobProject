@@ -171,5 +171,48 @@ a {
     border: 1px solid #00a4ff;
     color: #00a4ff;
     margin-top: 5px;
+    font-weight: 700;
 }
+
+
+/* 精品模块开始 */
+.goods {
+    height: 60px;
+    /* 行高会继承给孩子 */
+    line-height: 60px;
+    background-color: #fff;
+    margin-top: 10px;
+    box-shadow: 0 4px 3px 3px rgba(0,0,0,0.1);
+}
+
+.goods h3{
+    float: left;
+    font-size: 16px;
+    text-align: center;
+    color: #00a4ff;
+    margin-left: 30px;
+}
+.goods ul{
+    float: left;
+    margin-left: 30px;
+}
+
+/* 这里是不需要给宽度的，因为里面每一项文字长度不一样，给每一项加padding */
+.goods ul li {
+    float: left;
+    /* border-left: 1px solid #bfbfbf; */
+}
+.goods ul li a {
+    padding: 0 30px;
+    font-size: 16px;
+    color: #050505;
+    border-left: 1px solid #ccc;
+}
+.goods a{
+    float: right;
+    font-size: 14px;
+    color: #00a4ff;
+    margin-right: 30px;
+}
+/* 精品模块结束 */
 
