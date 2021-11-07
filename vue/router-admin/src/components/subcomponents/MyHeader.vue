@@ -19,6 +19,7 @@
 export default {
   name: 'MyHeader',
   methods: {
+    //退出登陆
     logout() {
       localStorage.removeItem('token')
       this.$router.push('/login')
