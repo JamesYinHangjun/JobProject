@@ -9,7 +9,7 @@
       <MyAside></MyAside>
       <!-- 右侧内容主体区域 -->
       <div class="home-main-body">
-        123
+        <router-view></router-view>
       </div>
     </div>
   </div>
