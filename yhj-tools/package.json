@@ -1,0 +1,15 @@
+{
+  "name": "yhj-tools",
+  "version": "1.0.0",
+  "main": "index.js",
+  "description": "提供了格式化时间",
+  "keywords": [
+    "yhj",
+    "dateFormat",
+    "escape"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "nrm": "^1.2.5"
+  }
+}
