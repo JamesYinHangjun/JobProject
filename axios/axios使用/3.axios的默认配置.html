@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <button>发送get请求</button>
+    <button>发送post请求</button>
+    <button>发送put请求</button>
+    <button>发送delete请求</button>
+  </div>
+
+  <script>
+    var btns = document.querySelectorAll('button')
+
+    // 默认配置
+    axios.defaults.method = 'GET'
+    axios.defaults.baseURL = "http://localhost:3000"
+
+    // get请求
+    btns[0].onclick = function () {
+      axios({
+        url: '/posts/1'
+      }).then(response => {
+        console.log(response)
+      })
+    }
+
+  </script>
+</body>
+
+</html>
